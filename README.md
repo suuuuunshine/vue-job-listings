@@ -34,7 +34,7 @@ npx vitest
 ### Project Structure
 The project follows a modular architecture with reusable components:
 
-´´´src/
+``` src/
 │── components/   # UI components (JobCard.vue, JobList.vue, etc.)
 │── views/        # Page views (JobList.vue, JobDetail.vue)
 │── stores/       # Pinia store for state management
@@ -42,7 +42,8 @@ The project follows a modular architecture with reusable components:
 │── assets/       # Static assets (CSS, images)
 │── tests/        # Unit tests using Vitest
 │── main.ts       # App entry point
-│── App.vue       # Root component´´´
+│── App.vue       # Root component
+```
 
 ## State Management
 Used Pinia to manage job listings and filters efficiently.
