@@ -1,0 +1,112 @@
+/* Font Setup */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--magenta-haze);
+  background-color: rgba(244, 227, 209, 0.5);
+}
+
+/* Color Palette */
+:root {
+  --magenta-haze: #904c77ff;
+  --amaranth-pink: #e49ab0ff;
+  --melon: #ecb8a5ff;
+  --pale-dogwood: #eccfc3ff;
+  --mountbatten-pink: #957d95ff;
+}
+
+/* Utility Classes for Colors */
+.white {
+ background-color: #ffff;
+}
+
+.white--text {
+    color: #ffff;
+}
+
+.magenta {
+  background-color: var(--magenta-haze);
+}
+
+.amaranth {
+  background-color: var(--amaranth-pink);
+}
+
+.melon {
+  background-color: var(--melon);
+}
+
+.pale-dogwood {
+  background-color: var(--pale-dogwood);
+}
+
+.mountbatten-pink {
+  background-color: var(--mountbatten-pink);
+}
+
+/* Text Color Utilities */
+.magenta--text {
+  color: var(--magenta-haze);
+}
+
+.amaranth--text {
+  color: var(--amaranth-pink);
+}
+
+.melon--text {
+  color: var(--melon);
+}
+
+.pale-dogwood--text {
+  color: var(--pale-dogwood);
+}
+
+.mountbatten-pink--text {
+  color: var(--mountbatten-pink);
+}
+
+/* Border Color Utilities */
+.magenta--border {
+  border-color: var(--magenta-haze);
+}
+
+.amaranth--border {
+  border-color: var(--amaranth-pink);
+}
+
+.melon--border {
+  border-color: var(--melon);
+}
+
+.pale-dogwood--border {
+  border-color: var(--pale-dogwood);
+}
+
+.mountbatten-pink--border {
+  border-color: var(--mountbatten-pink);
+}
+
+/* Global Styles */
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0 16px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--magenta-haze);
+}
+
+a:hover {
+  color: var(--pale-dogwood);
+}
+
