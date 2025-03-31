@@ -19,24 +19,22 @@ A simple job listing application built with Vue 3, TypeScript, and Pinia for sta
 
 git clone https://github.com/yourusername/vue-job-listings.git
 cd vue-job-listings
-2️⃣ Install Dependencies
 
+### 2️⃣ Install Dependencies
 npm install
-3️⃣ Run the Development Server
 
+### 3️⃣ Run the Development Server
 npm run dev
 The app will be available at http://localhost:5173/.
 
-4️⃣ Run Unit Tests
-
+### 4️⃣ Run Unit Tests
 npx vitest
-📌 Approach
-Project Structure
+
+## 📌 Approach
+### Project Structure
 The project follows a modular architecture with reusable components:
 
-bash
-
-src/
+´´´src/
 │── components/   # UI components (JobCard.vue, JobList.vue, etc.)
 │── views/        # Page views (JobList.vue, JobDetail.vue)
 │── stores/       # Pinia store for state management
@@ -44,36 +42,23 @@ src/
 │── assets/       # Static assets (CSS, images)
 │── tests/        # Unit tests using Vitest
 │── main.ts       # App entry point
-│── App.vue       # Root component
-State Management
+│── App.vue       # Root component´´´
+
+## State Management
 Used Pinia to manage job listings and filters efficiently.
 
-Routing
+## Routing
 Used Vue Router with two main routes:
-
 /jobs → Displays job listings.
-
 /jobs/:id → Shows job details.
 
-Testing
+## Testing
 Used Vitest for unit tests to ensure component correctness.
 
-🎯 Deployment
+## 🎯 Deployment
 To deploy, use Vercel, Netlify, or GitHub Pages. Example with Netlify:
-
-
 npm run build
 netlify deploy
-📜 License
-This project is licensed under the MIT License.
 
 📩 Contact
 For questions or suggestions, feel free to reach out! 🚀
-
-yaml
-Copiar
-Editar
-
----
-
-This README provides **clear setup instructions**, an **overview of the approach**, and **deployment guidelines**. Let me know if you'd like any modifications! 😊
