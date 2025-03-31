@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "category": "Frontend",
+    "company": "TechCorp",
+    "description": "We're looking for a Vue.js developer to join our dynamic team and work on building innovative web applications.",
+    "location": "Remote"
+  },
+  {
+    "id": 2,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "DevFirm",
+    "description": "Looking for a Node.js expert to develop and maintain server-side logic and database management systems.",
+    "location": "New York"
+  },
+  {
+    "id": 3,
+    "title": "Fullstack Developer",
+    "category": "Fullstack",
+    "company": "SoftSolutions",
+    "description": "Join our full-stack team to build scalable applications with React and Node.js for high-traffic platforms.",
+    "location": "San Francisco"
+  },
+  {
+    "id": 4,
+    "title": "Frontend Developer",
+    "category": "Frontend",
+    "company": "CreativeX",
+    "description": "Looking for a talented frontend developer with strong React and Vue.js skills to enhance our customer-facing web applications.",
+    "location": "Austin"
+  },
+  {
+    "id": 5,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "WebTech",
+    "description": "We need a backend developer experienced in Python and Django to help build scalable web services and databases.",
+    "location": "Chicago"
+  },
+  {
+    "id": 6,
+    "title": "UI/UX Designer",
+    "category": "Frontend",
+    "company": "DesignWorks",
+    "description": "Seeking a UI/UX designer to collaborate with our developers and create intuitive user interfaces for web apps.",
+    "location": "Los Angeles"
+  },
+  {
+    "id": 7,
+    "title": "Frontend Developer",
+    "category": "Frontend",
+    "company": "NextGen Tech",
+    "description": "Looking for a React.js developer with a keen eye for design to create visually appealing websites and web apps.",
+    "location": "Remote"
+  },
+  {
+    "id": 8,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "CodeLab",
+    "description": "We're hiring a backend developer with experience in Golang to help build and maintain microservices for large-scale applications.",
+    "location": "London"
+  },
+  {
+    "id": 9,
+    "title": "Fullstack Developer",
+    "category": "Fullstack",
+    "company": "Innovative Solutions",
+    "description": "Join our team to develop both client and server-side solutions using Angular and Express.js to improve customer engagement.",
+    "location": "Seattle"
+  },
+  {
+    "id": 10,
+    "title": "Frontend Developer",
+    "category": "Frontend",
+    "company": "PixelPerfect",
+    "description": "Looking for a frontend developer with experience in Vue.js to work on responsive web applications for various industries.",
+    "location": "Remote"
+  },
+  {
+    "id": 11,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "TechWorks",
+    "description": "We need a backend developer experienced with Java and Spring Boot to design and implement robust APIs for our services.",
+    "location": "Berlin"
+  },
+  {
+    "id": 12,
+    "title": "Fullstack Developer",
+    "category": "Fullstack",
+    "company": "CodeLabs",
+    "description": "Join our team to work on exciting fullstack projects using JavaScript frameworks like React and Node.js.",
+    "location": "Toronto"
+  },
+  {
+    "id": 13,
+    "title": "React Developer",
+    "category": "Frontend",
+    "company": "TechPioneers",
+    "description": "Looking for a React developer to join a team working on complex single-page applications and improve user experiences.",
+    "location": "Remote"
+  },
+  {
+    "id": 14,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "QuantumSoft",
+    "description": "We need a backend developer experienced in cloud services like AWS and building scalable web applications.",
+    "location": "New York"
+  },
+  {
+    "id": 15,
+    "title": "Fullstack Developer",
+    "category": "Fullstack",
+    "company": "SolutionsPro",
+    "description": "Seeking a full-stack developer with strong knowledge in React, Node.js, and database management to help us build scalable web apps.",
+    "location": "Austin"
+  },
+  {
+    "id": 16,
+    "title": "Senior Frontend Developer",
+    "category": "Frontend",
+    "company": "TechVibe",
+    "description": "Looking for a senior frontend developer with a deep understanding of performance optimization and modern JavaScript frameworks.",
+    "location": "San Francisco"
+  },
+  {
+    "id": 17,
+    "title": "Backend Engineer",
+    "category": "Backend",
+    "company": "DevHive",
+    "description": "Join our backend engineering team to work on API integrations, scalability, and cloud-based solutions for our clients.",
+    "location": "Chicago"
+  },
+  {
+    "id": 18,
+    "title": "Frontend Developer",
+    "category": "Frontend",
+    "company": "SmartTech",
+    "description": "Looking for a frontend developer to join a fast-paced environment to build responsive and mobile-first web applications.",
+    "location": "Los Angeles"
+  },
+  {
+    "id": 19,
+    "title": "React.js Developer",
+    "category": "Frontend",
+    "company": "TechBridge",
+    "description": "We need an experienced React.js developer to help us build interactive user interfaces for dynamic web applications.",
+    "location": "Remote"
+  },
+  {
+    "id": 20,
+    "title": "Backend Developer",
+    "category": "Backend",
+    "company": "SoftWave",
+    "description": "We are seeking a backend developer to design and build RESTful APIs and integrate with various third-party services.",
+    "location": "London"
+  }
+]
