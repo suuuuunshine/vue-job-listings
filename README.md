@@ -45,7 +45,7 @@ bash
 src/
 │── components/   # UI components (JobCard.vue, JobList.vue, etc.)
 │── views/        # Page views (JobList.vue, JobDetail.vue)
-│── stores/       # Pinia store for state management
+│── store/       # Pinia store for state management
 │── router/       # Vue Router configuration
 │── assets/       # Static assets (CSS, images)
 │── tests/        # Unit tests using Vitest
