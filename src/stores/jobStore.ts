@@ -6,7 +6,7 @@ import type { Job } from "../types/job";
 export const useJobStore = defineStore("jobStore", () => {
   const jobs = ref<Job[]>([]);
   const page = ref(1);
-  const limit = ref(6);
+  const limit = ref(8);
   const selectedCategory = ref("");
   const searchQuery = ref("");
   const totalCount = ref(0);
