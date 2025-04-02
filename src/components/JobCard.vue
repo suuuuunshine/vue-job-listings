@@ -1,6 +1,6 @@
 <template>
   <div
-    class="job-card"
+    class="job-card pale-dogwood"
     :style="cardStyle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
@@ -8,24 +8,24 @@
   >
     <h3 class="job-title">
       <WordHighlighter
-        highlight-class="mountbatten-pink white--text"
+        highlight-class="yellow-primary-pink almost-black--text"
         :query="highlight"
         :textToHighlight="job.title"
       />
     </h3>
     <div class="job-info">
-      <div class="job-company amaranth pale-dogwood--text">
+      <div class="job-company muted-blue white--text">
         <span class="material-icons">apartment</span>
         <WordHighlighter
-          highlight-class="mountbatten-pink white--text"
+          highlight-class="yellow-primary-pink almost-black--text"
           :query="highlight"
           :textToHighlight="job.company"
         />
       </div>
-      <div class="job-location amaranth pale-dogwood--text">
+      <div class="job-location muted-blue white--text">
         <span class="material-icons">location_on</span>
         <WordHighlighter
-          highlight-class="mountbatten-pink white--text"
+          highlight-class="yellow-primary-pink almost-black--text"
           :query="highlight"
           :textToHighlight="job.location"
         />
@@ -33,12 +33,12 @@
     </div>
     <div class="job-description">
       <WordHighlighter
-        highlight-class="mountbatten-pink white--text"
+        highlight-class="yellow-primary-pink almost-black--text"
         :query="highlight"
         :textToHighlight="job.description"
       />
     </div>
-    <button @click.stop="applyJob" class="apply-button magenta--text">
+    <button @click.stop="applyJob" class="blue-primary white--text">
       Apply
     </button>
   </div>
@@ -46,8 +46,11 @@
 
 <script setup lang="ts">
 import { defineProps, ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter } from "vue-router"; // To use router for navigation
 import WordHighlighter from "vue-word-highlighter";
+import { useModalStore } from "../stores/jobApplicationModalStore";
+
+const modalStore = useModalStore();
 
 const props = defineProps({
   job: {
@@ -66,8 +69,6 @@ const cardStyle = ref({
   transition: "transform 0.3s ease",
 });
 
-const router = useRouter();
-
 const onMouseEnter = () => {
   cardStyle.value = {
     transform: "scale(1.05)",
@@ -82,12 +83,14 @@ const onMouseLeave = () => {
   };
 };
 
-const applyJob = () => {
-  console.log(`Applying for ${props.job.title}`);
-};
+const router = useRouter();
 
 const goToJobDescription = () => {
   router.push({ name: "job-description", params: { id: props.job.id } });
+};
+
+const applyJob = () => {
+  modalStore.openModal(props.job);
 };
 </script>
 
@@ -96,11 +99,13 @@ const goToJobDescription = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: transparent;
-  border: 1px solid var(--mountbatten-pink);
+  border: none;
   padding: 16px;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  -webkit-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
+  -moz-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
+  box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
   cursor: pointer;
 
   &:hover {
@@ -111,10 +116,16 @@ const goToJobDescription = () => {
     display: flex;
     font-size: 12px;
     align-items: center;
+    margin-bottom: 12px;
   }
 
   .job-title {
-    color: var(--magenta-haze);
+    color: var(--dark-blue);
+    margin-bottom: 12px;
+  }
+
+  .job-description {
+    color: var(--almost-black);
   }
 
   .job-company,
@@ -126,13 +137,20 @@ const goToJobDescription = () => {
     display: flex;
   }
 
-  .job-description {
-    color: var(--mountbatten-pink);
-  }
-
   .material-icons {
     font-size: 14px;
     margin-right: 4px;
+  }
+
+  button {
+    margin-top: 12px;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--dark-blue);
+    }
   }
 }
 </style>
