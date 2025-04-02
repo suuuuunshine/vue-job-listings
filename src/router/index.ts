@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import JobDetail from "../views/JobDetail.vue";
 import JobList from "../views/JobList.vue";
+import NotFound from "../views/NotFound.vue";
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: "/jobs/:id",
     name: "job-description",
     component: JobDetail,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "404",
+    component: NotFound,
   },
 ];
 

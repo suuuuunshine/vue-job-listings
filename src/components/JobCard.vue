@@ -38,14 +38,14 @@
         :textToHighlight="job.description"
       />
     </div>
-    <button @click.stop="applyJob" class="blue-primary white--text">
+    <button @click.stop="applyToJob" class="blue-primary white--text">
       Apply
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router"; // To use router for navigation
 import WordHighlighter from "vue-word-highlighter";
 import { useModalStore } from "../stores/jobApplicationModalStore";
@@ -89,7 +89,7 @@ const goToJobDescription = () => {
   router.push({ name: "job-description", params: { id: props.job.id } });
 };
 
-const applyJob = () => {
+const applyToJob = () => {
   modalStore.openModal(props.job);
 };
 </script>
