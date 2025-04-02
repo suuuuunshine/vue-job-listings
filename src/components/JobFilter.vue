@@ -1,7 +1,7 @@
 <template>
   <div class="select-wrapper">
     <p class="label">Filter by category</p>
-    <select class="magenta white--text" @change="onCategoryChange">
+    <select class="muted-blue white--text" @change="onCategoryChange">
       <option value="">All</option>
       <option value="Frontend">Frontend</option>
       <option value="Backend">Backend</option>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useJobStore } from "../store/jobStore";
+import { useJobStore } from "../stores/jobStore";
 
 const store = useJobStore();
 
@@ -38,7 +38,7 @@ select {
 
 select:focus {
   outline: none;
-  border-color: var(--magenta-haze);
+  border-color: var(--dark-blue);
 }
 
 .label {
