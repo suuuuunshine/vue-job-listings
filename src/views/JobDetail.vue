@@ -160,6 +160,10 @@ ul li {
   align-items: top;
 }
 
+.perks-list {
+  margin-bottom: 70px;
+}
+
 .perks-title {
   margin: 28px 0 12px 0;
 }
@@ -200,7 +204,7 @@ ul li {
 .floating-button {
   position: fixed;
   bottom: 20px;
-  right: 50%;
+  right: 48%;
   padding: 15px 25px;
   background-color: var(--dark-blue);
   color: white;

@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <router-link to="/" class="logo">
+    <router-link to="/jobs" class="logo">
       <img
         src="../src/assets/companylogo.png"
         alt="company logo"
@@ -8,7 +8,7 @@
       />
     </router-link>
 
-    <router-link to="/" class="job-header-route white--text"
+    <router-link to="/jobs" class="job-header-route white--text"
       >Job Listings</router-link
     >
   </header>
