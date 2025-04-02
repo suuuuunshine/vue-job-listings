@@ -180,10 +180,13 @@ const resetForm = () => {
   background-color: var(--pale-white);
   padding: 20px;
   border-radius: 8px;
-  max-width: 400px;
-  width: 100%;
+  max-width: 600px;
+  width: 90%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   position: relative;
+  overflow: hidden;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .form-group {
@@ -215,6 +218,7 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  margin-bottom: 8px;
 }
 
 button[type="submit"] {
@@ -225,5 +229,31 @@ button[type="submit"] {
 button[type="button"] {
   background-color: var(--dark-coral);
   color: white;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 14px;
+  }
 }
 </style>
