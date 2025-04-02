@@ -1,5 +1,6 @@
 <template>
   <div
+    data-testid="job-card"
     class="job-card pale-dogwood"
     :style="cardStyle"
     @mouseenter="onMouseEnter"
@@ -8,6 +9,7 @@
   >
     <h3 class="job-title">
       <WordHighlighter
+        data-testid="job-title"
         highlight-class="yellow-primary-pink almost-black--text"
         :query="highlight"
         :textToHighlight="job.title"
@@ -17,6 +19,7 @@
       <div class="job-company muted-blue white--text">
         <span class="material-icons">apartment</span>
         <WordHighlighter
+          data-testid="job-company"
           highlight-class="yellow-primary-pink almost-black--text"
           :query="highlight"
           :textToHighlight="job.company"
@@ -25,6 +28,7 @@
       <div class="job-location muted-blue white--text">
         <span class="material-icons">location_on</span>
         <WordHighlighter
+          data-testid="job-location"
           highlight-class="yellow-primary-pink almost-black--text"
           :query="highlight"
           :textToHighlight="job.location"
@@ -33,12 +37,17 @@
     </div>
     <div class="job-description">
       <WordHighlighter
+        data-testid="job-description"
         highlight-class="yellow-primary-pink almost-black--text"
         :query="highlight"
         :textToHighlight="job.description"
       />
     </div>
-    <button @click.stop="applyToJob" class="blue-primary white--text">
+    <button
+      @click.stop="applyToJob"
+      class="blue-primary white--text"
+      data-testid="apply-button"
+    >
       Apply
     </button>
   </div>
