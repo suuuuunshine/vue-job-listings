@@ -6,10 +6,6 @@ import NotFound from "../views/NotFound.vue";
 const routes = [
   {
     path: "/",
-    redirect: "/jobs",
-  },
-  {
-    path: "/jobs",
     name: "job-list",
     component: JobList,
   },

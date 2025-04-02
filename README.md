@@ -58,7 +58,7 @@ Used Pinia to manage job listings and filters efficiently.
 ## Routing
 
 Used Vue Router with two main routes:
-/jobs → Displays job listings.
+/ → Displays job listings.
 /jobs/:id → Shows job details.
 
 ## Testing
