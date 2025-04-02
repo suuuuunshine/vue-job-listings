@@ -43,7 +43,7 @@ The project follows a modular architecture with reusable components:
 ```src/
 │── components/   # UI components (JobCard.vue, JobList.vue, etc.)
 │── views/        # Page views (JobList.vue, JobDetail.vue)
-│── store/        # Pinia store for state management
+│── stores/        # Pinia stores for state management
 │── router/       # Vue Router configuration
 │── assets/       # Static assets (CSS, images)
 │── tests/        # Unit tests using Vitest
