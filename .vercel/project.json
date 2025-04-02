@@ -1,1 +1,5 @@
-{"projectId":"prj_TKb4c17fziCf0R8voh8JM98rZVdn","orgId":"team_QJcqM6yRcmhqZc01cOFLg271"}
+{
+  "projectId": "prj_TKb4c17fziCf0R8voh8JM98rZVdn",
+  "orgId": "team_QJcqM6yRcmhqZc01cOFLg271",
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+}
