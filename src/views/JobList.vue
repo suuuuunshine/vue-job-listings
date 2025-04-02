@@ -2,16 +2,13 @@
   <div>
     <div class="handlers">
       <JobFilter />
-      <div class="search-wrapper">
-        <input
-          type="text"
-          class="search-input"
-          placeholder="Search for jobs by title, description, location, or company"
-          @input="onSearch"
-        />
-      </div>
+      <input
+        type="search"
+        class="search-input"
+        placeholder="Search for jobs by title, description, location, or company"
+        @input="onSearch"
+      />
     </div>
-
     <div v-if="loading" class="loading">
       <p>Loading....</p>
     </div>
@@ -29,8 +26,8 @@
         :highlight="searchQuery"
       />
     </div>
-    
-    <div class="pagination" v-if="!loading && !empty">
+
+    <div class="pagination" v-if="!loading && !empty && totalPages !== 1">
       <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
       <span class="current-page"
         >Page {{ currentPage }} of {{ totalPages }}</span
@@ -45,8 +42,9 @@
 <script setup lang="ts">
 import JobFilter from "../components/JobFilter.vue";
 import JobCard from "../components/JobCard.vue";
+
 import { ref, computed, watch } from "vue";
-import { useJobStore } from "../store/jobStore";
+import { useJobStore } from "../stores/jobStore";
 
 const loading = ref(false);
 const empty = ref(false);
@@ -95,7 +93,7 @@ watch(
 <style lang="scss" scoped>
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 16px;
   padding: 12px;
 }
@@ -109,7 +107,7 @@ watch(
 
 .pagination button {
   padding: 8px 16px;
-  background-color: var(--magenta-haze);
+  background-color: var(--dark-blue);
   color: white;
   border: none;
   border-radius: 5px;
@@ -127,18 +125,20 @@ watch(
 
 .handlers {
   display: flex;
-  align-items: center;
   justify-content: end;
+  align-items: center;
   margin: 0 12px;
 }
 
 .search-input {
-  padding: 4px 8px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  max-width: 400px;
+  flex-grow: 1;
+  border-radius: 50px;
   border: none;
-  color: var(--magenta-haze);
+  color: var(--dark-blue);
   &::placeholder {
-    color: var(--magenta-haze);
+    color: var(--dark-blue);
   }
   &:focus {
     outline: none;
