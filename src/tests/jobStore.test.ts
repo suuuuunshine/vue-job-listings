@@ -7,14 +7,12 @@ describe("Job Store", () => {
   const store = useJobStore();
 
   it("fetches jobs", async () => {
-    await store.fetchJobs();
+    await store.fetchJobsForPage();
     expect(store.jobs.length).toBeGreaterThan(0);
   });
 
   it("filters jobs correctly", () => {
     store.filterJobs("Frontend");
-    expect(store.filteredJobs.every((job) => job.category === "Frontend")).toBe(
-      true
-    );
+    expect(store.jobs.every((job) => job.category === "Frontend")).toBe(true);
   });
 });

@@ -12,10 +12,12 @@
     "skipLibCheck": true,
     "allowJs": true,
     "baseUrl": "./src",
+    "isolatedModules": true,
+    "noEmit": false,
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "vue-tsc"]
   },
   "include": [
     "vite.config.ts",
