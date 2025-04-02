@@ -1,5 +1,5 @@
 /* Font Setup */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 
 * {
   margin: 0;
@@ -7,32 +7,74 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Inter', sans-serif;
+html,
+body {
+  font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: var(--magenta-haze);
-  background-color: rgba(244, 227, 209, 0.5);
+  color: var(--dark-blue);
+  background-color: var(--pale-white);
 }
 
 /* Color Palette */
 :root {
+  --dark-blue: #011761;
+  --yellow-primary: #edc839;
+  --green-primary: #277c40;
+  --pale-white: #f9f7f5;
+  --muted-blue: #344068;
+  --muted-pink: #b964a0;
+  --dark-coral: #c16844;
+  --almost-black: #211b03;
   --magenta-haze: #904c77ff;
   --amaranth-pink: #e49ab0ff;
   --melon: #ecb8a5ff;
-  --pale-dogwood: #eccfc3ff;
+  --pale-dogwood: #dedad6;
   --mountbatten-pink: #957d95ff;
+  --blue-primary: #082ac7;
 }
 
 /* Utility Classes for Colors */
 .white {
- background-color: #ffff;
+  background-color: #ffff;
 }
 
-.white--text {
-    color: #ffff;
+.dark-blue {
+  background-color: var(--dark-blue);
 }
 
-.magenta {
+.blue-primary {
+  background-color: var(--blue-primary);
+}
+
+.yellow-primary {
+  background-color: var(--yellow-primary);
+}
+
+.green-primary {
+  background-color: var(--green-primary);
+}
+
+.pale-white {
+  background-color: var(--pale-white);
+}
+
+.muted-pink {
+  background-color: var(--muted-pink);
+}
+
+.muted-blue {
+  background-color: var(--muted-blue);
+}
+
+.dark-coral {
+  background-color: var(--dark-coral);
+}
+
+.almost-black {
+  background-color: var(--almost-black);
+}
+
+.magenta-haze {
   background-color: var(--magenta-haze);
 }
 
@@ -53,7 +95,43 @@ html, body {
 }
 
 /* Text Color Utilities */
-.magenta--text {
+.white--text {
+  color: #ffff;
+}
+
+.dark-blue--text {
+  color: var(--dark-blue);
+}
+
+.yellow-primary--text {
+  color: var(--yellow-primary);
+}
+
+.green-primary--text {
+  color: var(--green-primary);
+}
+
+.pale-white--text {
+  color: var(--pale-white);
+}
+
+.muted-pink--text {
+  color: var(--muted-pink);
+}
+
+.muted-blue--text {
+  color: var(--muted-blue);
+}
+
+.dark-coral--text {
+  color: var(--dark-coral);
+}
+
+.almost-black--text {
+  color: var(--almost-black);
+}
+
+.magenta-haze--text {
   color: var(--magenta-haze);
 }
 
@@ -74,7 +152,39 @@ html, body {
 }
 
 /* Border Color Utilities */
-.magenta--border {
+.dark-blue--border {
+  border-color: var(--dark-blue);
+}
+
+.yellow-primary--border {
+  border-color: var(--yellow-primary);
+}
+
+.green-primary--border {
+  border-color: var(--green-primary);
+}
+
+.pale-white--border {
+  border-color: var(--pale-white);
+}
+
+.muted-pink--border {
+  border-color: var(--muted-pink);
+}
+
+.muted-blue--border {
+  border-color: var(--muted-blue);
+}
+
+.dark-coral--border {
+  border-color: var(--dark-coral);
+}
+
+.almost-black--border {
+  border-color: var(--almost-black);
+}
+
+.magenta-haze--border {
   border-color: var(--magenta-haze);
 }
 
@@ -103,10 +213,9 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--magenta-haze);
+  color: var(--dark-blue);
 }
 
 a:hover {
   color: var(--pale-dogwood);
 }
-
