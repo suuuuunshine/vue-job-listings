@@ -1,6 +1,14 @@
 <template>
   <header class="header">
-    <router-link to="/jobs" class="job-header-title white--text"
+    <router-link to="/jobs" class="logo">
+      <img
+        src="../src/assets/companylogo.png"
+        alt="company logo"
+        width="100px"
+      />
+    </router-link>
+
+    <router-link to="/jobs" class="job-header-route white--text"
       >Job Listings</router-link
     >
   </header>
@@ -14,19 +22,23 @@ import JobApplicationModal from "../src/components/JobApplicationModal.vue";
 </script>
 
 <style lang="scss" scoped>
-.job-header-title {
-  font-size: 24px;
-  padding: 20px;
+.logo {
+  display: flex;
+  align-items: center;
+}
+.job-header-route {
+  font-size: 16px;
   font-weight: 600;
-  margin-top: 20px;
+  margin-left: 62px;
 }
 
 .header {
   background-color: var(--dark-blue);
   color: white;
   padding: 16px;
-  text-align: center;
   border-radius: 8px;
   margin: 20px;
+  display: flex;
+  align-items: center;
 }
 </style>
