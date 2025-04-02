@@ -26,14 +26,13 @@ const onCategoryChange = (event: Event) => {
 .select-wrapper {
   display: flex;
   align-items: center;
-  padding: 0 12px;
 }
 
 select {
   border-radius: 12px;
   padding: 4px 6px;
-  margin: 12px;
   border: 0;
+  margin-left: 6px;
 }
 
 select:focus {
@@ -43,5 +42,6 @@ select:focus {
 
 .label {
   font-size: 12px;
+  text-align: end;
 }
 </style>

@@ -135,6 +135,7 @@ watch(
   max-width: 400px;
   flex-grow: 1;
   border-radius: 50px;
+  margin-left: 4px;
   border: none;
   color: var(--dark-blue);
   &::placeholder {

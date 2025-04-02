@@ -112,8 +112,13 @@ const submitForm = () => {
 
 const handleFileUpload = (event: Event) => {
   const input = event.target as HTMLInputElement;
-  if (input?.files?.[0]) {
-    form.value.resume = input.files[0];
+  const file = input?.files?.[0];
+  if (file) {
+    if (file.size > 5 * 1024 * 1024) {
+      alert("File size exceeds 5MB.");
+    } else {
+      form.value.resume = file;
+    }
   }
 };
 
