@@ -104,7 +104,7 @@ describe("JobApplicationModal.vue", () => {
     await wrapper.find('[data-testid="modal-form"]').trigger("submit");
 
     expect(window.alert).toHaveBeenCalledWith(
-      'Application submitted succesfully: {"firstName":"John","lastName":"Doe","email":"john.doe@example.com","resume":null}'
+      `Application submitted successfully:\n Name: John\n Lastname: Doe\n Email: john.doe@example.com\n Resume: No file uploaded`
     );
   });
 });
