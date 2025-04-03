@@ -1,34 +1,26 @@
 import { mount } from "@vue/test-utils";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import CategoryFilter from "../components/CategoryFilter.vue";
+import { useJobStore } from "../stores/jobStore";
 
-describe.skip("CategoryFilter.vue", () => {
-  let filterJobsMock: vi.Mock;
-  beforeEach(() => {
-    filterJobsMock = vi.fn();
-    useJobStore.mockReturnValue({
-      filterJobs: filterJobsMock,
-    });
-  });
-  it("should render the select options correctly", () => {
+describe("CategoryFilter.vue", () => {
+  it("should call store.filterJobs with the correct category when the select value changes", async () => {
+    const store = useJobStore();
+    const mockFilterJobs = vi.fn();
+    store.filterJobs = mockFilterJobs;
+
     const wrapper = mount(CategoryFilter);
-    const options = wrapper.findAll("option");
-    expect(options).toHaveLength(4);
-    expect(options[0].text()).toBe("All");
-    expect(options[1].text()).toBe("Frontend");
-    expect(options[2].text()).toBe("Backend");
-    expect(options[3].text()).toBe("Fullstack");
-  });
-  it("should call filterJobs with the correct category when an option is selected", async () => {
-    const wrapper = mount(CategoryFilter);
-    const select = wrapper.find("select");
-    await select.setValue("Frontend");
-    expect(filterJobsMock).toHaveBeenCalledWith("Frontend");
-    await select.setValue("Backend");
-    expect(filterJobsMock).toHaveBeenCalledWith("Backend");
-    await select.setValue("Fullstack");
-    expect(filterJobsMock).toHaveBeenCalledWith("Fullstack");
-    await select.setValue("");
-    expect(filterJobsMock).toHaveBeenCalledWith("");
+
+    await wrapper.find("select").setValue("Frontend");
+
+    expect(mockFilterJobs).toHaveBeenCalledWith("Frontend");
+
+    await wrapper.find("select").setValue("Backend");
+
+    expect(mockFilterJobs).toHaveBeenCalledWith("Backend");
+
+    await wrapper.find("select").setValue("");
+
+    expect(mockFilterJobs).toHaveBeenCalledWith("");
   });
 });
