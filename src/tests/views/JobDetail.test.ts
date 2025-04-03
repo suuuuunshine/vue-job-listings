@@ -8,28 +8,14 @@ import JobList from "../../views/JobList.vue";
 import NotFound from "../../views/NotFound.vue";
 
 vi.mock("../../utils/mockApi", () => ({
-  fetchJobs: vi.fn().mockResolvedValue({
-    jobs: [
-      {
-        id: 1,
-        title: "Frontend Developer",
-        category: "Frontend",
-        company: "TechCorp",
-        description:
-          "We're looking for a Vue.js developer to join our dynamic team and work on building innovative web applications.",
-        location: "Remote",
-      },
-      {
-        id: 2,
-        title: "Backend Developer",
-        category: "Backend",
-        company: "DevFirm",
-        description:
-          "Looking for a Node.js expert to develop and maintain server-side logic and database management systems.",
-        location: "New York",
-      },
-    ],
-    total: 2,
+  fetchJobById: vi.fn().mockResolvedValue({
+    id: 1,
+    title: "Frontend Developer",
+    category: "Frontend",
+    company: "TechCorp",
+    description:
+      "We're looking for a Vue.js developer to join our dynamic team and work on building innovative web applications.",
+    location: "Remote",
   }),
 }));
 
@@ -77,7 +63,7 @@ describe("JobDetail", () => {
       },
     });
 
-    await wrapper.vm.$nextTick();
+    await flushPromises();
 
     expect(wrapper.find("[data-testid='job-view']").exists()).toBe(true);
     expect(wrapper.find("[data-testid='job-title']").text()).toBe(
@@ -89,7 +75,7 @@ describe("JobDetail", () => {
   });
 
   it("redirects to 404 if job is not found", async () => {
-    router.push({ name: "job-detail", params: { id: "999" } });
+    router.push({ name: "job-detail", params: { id: "notid" } });
     await router.isReady();
 
     const wrapper = mount(JobDetail, {
@@ -112,7 +98,8 @@ describe("JobDetail", () => {
         plugins: [router],
       },
     });
-    await wrapper.vm.$nextTick();
+
+    await flushPromises();
 
     const modalStore = useModalStore();
     const mockOpenModal = vi.fn();
