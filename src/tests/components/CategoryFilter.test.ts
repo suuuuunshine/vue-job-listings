@@ -15,15 +15,19 @@ describe("CategoryFilter.vue", () => {
 
     const wrapper = mount(CategoryFilter);
 
-    await wrapper.find("select").setValue("Frontend");
+    await wrapper
+      .find('[data-testid="category-filter-select"]')
+      .setValue("Frontend");
 
     expect(mockFilterJobs).toHaveBeenCalledWith("Frontend");
 
-    await wrapper.find("select").setValue("Backend");
+    await wrapper
+      .find('[data-testid="category-filter-select"]')
+      .setValue("Backend");
 
     expect(mockFilterJobs).toHaveBeenCalledWith("Backend");
 
-    await wrapper.find("select").setValue("");
+    await wrapper.find('[data-testid="category-filter-select"]').setValue("");
 
     expect(mockFilterJobs).toHaveBeenCalledWith("");
   });

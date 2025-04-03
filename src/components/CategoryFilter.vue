@@ -1,7 +1,7 @@
 <template>
   <div class="select-wrapper">
     <p class="label">Filter by category</p>
-    <select class="muted-blue white--text" @change="onCategoryChange">
+    <select data-testid="category-filter-select" class="muted-blue white--text" @change="onCategoryChange">
       <option value="">All</option>
       <option value="Frontend">Frontend</option>
       <option value="Backend">Backend</option>
