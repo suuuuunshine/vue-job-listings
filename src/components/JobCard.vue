@@ -95,7 +95,7 @@ const onMouseLeave = () => {
 const router = useRouter();
 
 const goToJobDescription = () => {
-  router.push({ name: "job-description", params: { id: props.job.id } });
+  router.push({ name: "job-detail", params: { id: props.job.id } });
 };
 
 const applyToJob = () => {

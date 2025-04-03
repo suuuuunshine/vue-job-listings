@@ -63,7 +63,7 @@ describe("Vue Router", () => {
     expect(wrapper.findComponent(JobList).exists()).toBe(true);
   });
 
-  it("should navigate to job-description", async () => {
+  it("should navigate to job-detail", async () => {
     const wrapper = mount(JobDetail, {
       global: {
         plugins: [router, pinia],
