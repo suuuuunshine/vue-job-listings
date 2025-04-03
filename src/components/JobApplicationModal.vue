@@ -1,20 +1,30 @@
 <template>
   <Teleport to="body">
     <transition name="fade">
-      <div v-if="modalStore.isVisible" class="modal-overlay" @click="close">
+      <div
+        v-if="modalStore.isVisible"
+        class="modal-overlay"
+        data-testid="modal-overlay"
+        @click="close"
+      >
         <transition name="modal">
-          <div class="modal" @click.stop>
-            <h2>Apply now for {{ modalStore.job?.title || "this job" }}</h2>
-            <p class="job-description">{{ modalStore.job?.description }}</p>
-            <form @submit.prevent="submitForm">
-              <div class="form-group">
+          <div class="modal" @click.stop data-testid="modal-content">
+            <h2 data-testid="modal-title">
+              Apply now for {{ modalStore.job?.title || "this job" }}
+            </h2>
+            <p class="job-description" data-testid="modal-job-description">
+              {{ modalStore.job?.description }}
+            </p>
+            <form @submit.prevent="submit" data-testid="modal-form">
+              <div class="form-group" data-testid="modal-form-group">
                 <label for="firstName">First Name*</label>
                 <input
                   type="text"
-                  v-model="form.firstName"
-                  @blur="validateField('firstName')"
-                  :class="{ invalid: errors.firstName }"
                   required
+                  data-testid="first-name-input"
+                  v-model="form.firstName"
+                  :class="{ invalid: errors.firstName }"
+                  @blur="validateField('firstName')"
                 />
                 <p v-if="errors.firstName" class="error-message">
                   {{ errors.firstName }}
@@ -25,10 +35,11 @@
                 <label for="lastName">Last Name*</label>
                 <input
                   type="text"
-                  v-model="form.lastName"
-                  @blur="validateField('lastName')"
-                  :class="{ invalid: errors.lastName }"
                   required
+                  data-testid="last-name-input"
+                  v-model="form.lastName"
+                  :class="{ invalid: errors.lastName }"
+                  @blur="validateField('lastName')"
                 />
                 <p v-if="errors.lastName" class="error-message">
                   {{ errors.lastName }}
@@ -39,10 +50,11 @@
                 <label for="email">Email*</label>
                 <input
                   type="email"
-                  v-model="form.email"
-                  @blur="validateField('email')"
-                  :class="{ invalid: errors.email }"
                   required
+                  data-testid="email-input"
+                  v-model="form.email"
+                  :class="{ invalid: errors.email }"
+                  @blur="validateField('email')"
                 />
                 <p v-if="errors.email" class="error-message">
                   {{ errors.email }}
@@ -51,12 +63,26 @@
 
               <div class="form-group">
                 <label for="resume">Resume (optional)</label>
-                <input type="file" @change="handleFileUpload" />
+                <input
+                  type="file"
+                  data-testid="resume-input"
+                  @change="handleFileUpload"
+                />
               </div>
 
               <div class="form-actions">
-                <button type="button" @click="close">Cancel</button>
-                <button type="submit" :disabled="hasErrors">
+                <button
+                  type="button"
+                  data-testid="cancel-button"
+                  @click="close"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  data-testid="submit-button"
+                  class="submit-button"
+                >
                   Submit Application
                 </button>
               </div>
@@ -102,7 +128,7 @@ const hasErrors = computed(() =>
   Object.values(errors.value).some((error) => error)
 );
 
-const submitForm = () => {
+const submit = () => {
   Object.keys(form.value).forEach((field) => validateField(field));
   if (hasErrors.value) return;
   console.log("Form submitted:", form.value);
@@ -226,7 +252,7 @@ button {
   margin-bottom: 8px;
 }
 
-button[type="submit"] {
+.submit-button {
   background-color: var(--blue-primary);
   color: white;
 }
