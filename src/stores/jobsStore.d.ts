@@ -20,12 +20,15 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     totalCount: import("vue").Ref<number, number>;
     searchQuery: import("vue").Ref<string, string>;
     selectedCategory: import("vue").Ref<string, string>;
+    loading: import("vue").Ref<boolean, boolean>;
+    apiError: import("vue").Ref<string, string>;
     fetchJobsForPage: () => Promise<void>;
     nextPage: () => void;
     previousPage: () => void;
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
-}, "jobs" | "page" | "limit" | "totalCount" | "searchQuery" | "selectedCategory">, Pick<{
+    resetJobs: () => void;
+}, "jobs" | "page" | "limit" | "totalCount" | "searchQuery" | "selectedCategory" | "loading" | "apiError">, Pick<{
     jobs: import("vue").Ref<{
         id: number;
         title: string;
@@ -46,11 +49,14 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     totalCount: import("vue").Ref<number, number>;
     searchQuery: import("vue").Ref<string, string>;
     selectedCategory: import("vue").Ref<string, string>;
+    loading: import("vue").Ref<boolean, boolean>;
+    apiError: import("vue").Ref<string, string>;
     fetchJobsForPage: () => Promise<void>;
     nextPage: () => void;
     previousPage: () => void;
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
+    resetJobs: () => void;
 }, never>, Pick<{
     jobs: import("vue").Ref<{
         id: number;
@@ -72,9 +78,12 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     totalCount: import("vue").Ref<number, number>;
     searchQuery: import("vue").Ref<string, string>;
     selectedCategory: import("vue").Ref<string, string>;
+    loading: import("vue").Ref<boolean, boolean>;
+    apiError: import("vue").Ref<string, string>;
     fetchJobsForPage: () => Promise<void>;
     nextPage: () => void;
     previousPage: () => void;
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
-}, "fetchJobsForPage" | "nextPage" | "previousPage" | "filterJobs" | "searchJobs">>;
+    resetJobs: () => void;
+}, "fetchJobsForPage" | "nextPage" | "previousPage" | "filterJobs" | "searchJobs" | "resetJobs">>;
