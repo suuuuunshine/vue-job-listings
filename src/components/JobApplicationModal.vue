@@ -24,7 +24,7 @@
                   data-testid="first-name-input"
                   v-model="form.firstName"
                   :class="{ invalid: errors.firstName }"
-                  @blur="validateField('firstName')"
+                  @input="validateField('firstName')"
                 />
                 <p v-if="errors.firstName" class="error-message">
                   {{ errors.firstName }}
@@ -39,7 +39,7 @@
                   data-testid="last-name-input"
                   v-model="form.lastName"
                   :class="{ invalid: errors.lastName }"
-                  @blur="validateField('lastName')"
+                  @input="validateField('lastName')"
                 />
                 <p v-if="errors.lastName" class="error-message">
                   {{ errors.lastName }}
@@ -54,7 +54,7 @@
                   data-testid="email-input"
                   v-model="form.email"
                   :class="{ invalid: errors.email }"
-                  @blur="validateField('email')"
+                  @input="validateField('email')"
                 />
                 <p v-if="errors.email" class="error-message">
                   {{ errors.email }}
