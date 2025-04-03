@@ -1,7 +1,7 @@
 <template>
   <div class="view-container" data-testid="job-view">
     <h2 class="title">About us</h2>
-    <p>
+    <p class="about-us">
       At PixelCrafters, we're not just building the future — we're shaping it
       together. We believe in fostering an environment where innovation thrives,
       collaboration is key, and every voice is heard. Whether you're a seasoned
@@ -133,6 +133,11 @@ const perks = [
 ];
 </script>
 <style lang="scss" scoped>
+.about-us {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .material-icons {
   font-size: 16px;
   margin-top: 6px;
@@ -142,7 +147,7 @@ const perks = [
 .view-container {
   display: flex;
   flex-direction: column;
-  padding: 0 24px;
+  padding: 0 15%;
 }
 
 .title {
@@ -193,6 +198,8 @@ ul li {
 .perk-description {
   margin-top: 5px;
   font-size: 1em;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .perk-item:hover {
