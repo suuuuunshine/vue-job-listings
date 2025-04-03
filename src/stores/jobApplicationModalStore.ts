@@ -17,3 +17,5 @@ export const useModalStore = defineStore("modal", () => {
 
   return { isVisible, job, openModal, closeModal };
 });
+
+export type ModalStore = ReturnType<typeof useModalStore>;
