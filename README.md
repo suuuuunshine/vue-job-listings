@@ -2,6 +2,11 @@
 
 A simple job listing application built with Vue 3, TypeScript, and Pinia for state management. This app allows users to browse job postings, filter them by category, view job details, and submit applications.
 
+## 👾 Try the demo here https://pixel-crafter-jobs.vercel.app/ 
+or watch a video:
+https://github.com/user-attachments/assets/5dbc4c0a-ceba-4942-8d00-0ce244580994
+
+
 ## 🚀 Features
 
 - 🏗 Built with Vue 3 + Composition API
@@ -19,6 +24,7 @@ A simple job listing application built with Vue 3, TypeScript, and Pinia for sta
 ### 1️⃣ Clone the Repository
 
 git clone https://github.com/yourusername/vue-job-listings.git
+
 cd vue-job-listings
 
 ### 2️⃣ Install Dependencies
@@ -28,6 +34,7 @@ npm install
 ### 3️⃣ Run the Development Server
 
 npm run dev
+
 The app will be available at http://localhost:5173/.
 
 ### 4️⃣ Run Unit Tests
