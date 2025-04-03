@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
-import CategoryFilter from "../components/CategoryFilter.vue";
-import { useJobsStore } from "../stores/jobsStore";
+import CategoryFilter from "../../components/CategoryFilter.vue";
+import { useJobsStore } from "../../stores/jobsStore";
 
 vi.mock("../utils/mockApi.ts", () => ({
   fetchJobs: vi.fn().mockResolvedValue([]),

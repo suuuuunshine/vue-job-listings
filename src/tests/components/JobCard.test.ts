@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
-import JobCard from "../components/JobCard.vue";
-import { useModalStore } from "../stores/jobApplicationModalStore";
+import JobCard from "../../components/JobCard.vue";
+import { useModalStore } from "../../stores/jobApplicationModalStore";
 import { createRouter, createWebHistory } from "vue-router";
-import type { Job } from "../types/job";
+import type { Job } from "../../types/job";
 
 const router = createRouter({
   history: createWebHistory(),

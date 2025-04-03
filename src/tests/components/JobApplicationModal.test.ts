@@ -1,11 +1,11 @@
 import { shallowMount, mount, VueWrapper } from "@vue/test-utils";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import JobApplicationModal from "../components/JobApplicationModal.vue";
+import JobApplicationModal from "../../components/JobApplicationModal.vue";
 import {
   useModalStore,
   type ModalStore,
-} from "../stores/jobApplicationModalStore";
-import router from "../router";
+} from "../../stores/jobApplicationModalStore";
+import router from "../../router";
 import { flushPromises } from "@vue/test-utils";
 import type { ComponentPublicInstance } from "vue";
 
