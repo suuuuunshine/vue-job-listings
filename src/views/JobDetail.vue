@@ -41,21 +41,23 @@
 </template>
 
 <script setup lang="ts">
-import { useJobStore } from "../stores/jobStore";
+import { useJobsStore } from "../stores/jobsStore";
 import { useModalStore } from "../stores/jobApplicationModalStore";
 import { computed, watchEffect } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 const modalStore = useModalStore();
-const jobsStore = useJobStore();
+const jobsStore = useJobsStore();
 const route = useRoute();
 const router = useRouter();
 
 const job = computed(() => {
+  console.log(jobsStore.jobs);
   return jobsStore.jobs.find((j) => j.id === Number(route.params.id));
 });
 
 watchEffect(() => {
+  console.log(job.value);
   if (!job.value) {
     router.push({ name: "404" });
   }
