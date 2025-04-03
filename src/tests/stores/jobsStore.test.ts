@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { createPinia } from "pinia";
-import { useJobsStore } from "../stores/jobsStore";
-import { fetchJobs } from "../utils/mockApi";
+import { useJobsStore } from "../../stores/jobsStore";
+import { fetchJobs } from "../../utils/mockApi";
 
-vi.mock("../utils/mockApi", () => ({
+vi.mock("../../utils/mockApi", () => ({
   fetchJobs: vi.fn().mockResolvedValue({
     jobs: [
       {

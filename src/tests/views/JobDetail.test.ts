@@ -1,14 +1,13 @@
 import { flushPromises, mount } from "@vue/test-utils";
 import { createRouter, createWebHistory } from "vue-router";
-import { useModalStore } from "../stores/jobApplicationModalStore";
+import { useModalStore } from "../../stores/jobApplicationModalStore";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { useRouter } from "vue-router";
 import { setActivePinia, createPinia } from "pinia";
-import JobDetail from "../views/JobDetail.vue";
-import JobList from "../views/JobList.vue";
-import NotFound from "../views/NotFound.vue";
+import JobDetail from "../../views/JobDetail.vue";
+import JobList from "../../views/JobList.vue";
+import NotFound from "../../views/NotFound.vue";
 
-vi.mock("../utils/mockApi", () => ({
+vi.mock("../../utils/mockApi", () => ({
   fetchJobs: vi.fn().mockResolvedValue({
     jobs: [
       {

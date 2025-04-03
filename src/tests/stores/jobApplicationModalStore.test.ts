@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia } from "pinia";
-import { useModalStore } from "../stores/jobApplicationModalStore";
+import { useModalStore } from "../../stores/jobApplicationModalStore";
 
 describe("useModalStore", () => {
   let modalStore: ReturnType<typeof useModalStore>;
