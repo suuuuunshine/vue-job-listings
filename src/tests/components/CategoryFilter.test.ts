@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import CategoryFilter from "../../components/CategoryFilter.vue";
 import { useJobsStore } from "../../stores/jobsStore";
 
-vi.mock("../utils/mockApi.ts", () => ({
+vi.mock("../../utils/mockApi.ts", () => ({
   fetchJobs: vi.fn().mockResolvedValue([]),
 }));
 
