@@ -23,7 +23,6 @@ export const useJobsStore = defineStore("jobsStore", () => {
   };
 
   const fetchJobsForPage = async () => {
-    console.log("fetch");
     try {
       const { jobs: fetchedJobs, total } = await fetchJobs(
         page.value,

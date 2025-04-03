@@ -47,30 +47,35 @@
 </template>
 
 <script setup lang="ts">
-import { useJobsStore } from "../stores/jobsStore";
-import { useModalStore } from "../stores/jobApplicationModalStore";
-import { computed, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { fetchJobById } from "../utils/mockApi";
+import type { Job } from "../types/job";
+import { useModalStore } from "../stores/jobApplicationModalStore";
 
-const modalStore = useModalStore();
-const jobsStore = useJobsStore();
 const route = useRoute();
 const router = useRouter();
+const modalStore = useModalStore();
 
-const job = computed(() => {
-  return jobsStore.jobs.find((j) => j.id === Number(route.params.id));
-});
+const job = ref<Job | undefined>(undefined);
 
-watchEffect(() => {
+onMounted(async () => {
+  const jobId = Number(route.params.id);
+  if (isNaN(jobId)) {
+    router.push({ name: "404" });
+    return;
+  }
+
+  job.value = await fetchJobById(jobId);
+
   if (!job.value) {
     router.push({ name: "404" });
   }
 });
 
 const applyToJob = () => {
-  const jobValue = job.value;
-  if (jobValue) {
-    modalStore.openModal(jobValue);
+  if (job.value) {
+    modalStore.openModal(job.value);
   }
 };
 

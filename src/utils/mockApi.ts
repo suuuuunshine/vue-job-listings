@@ -36,3 +36,19 @@ export const fetchJobs = async (
     total: jobData.length,
   };
 };
+
+export const fetchJobById = async (id: number): Promise<Job | undefined> => {
+  try {
+    const response = await fetch("/jobs.json");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch job data");
+    }
+
+    const jobData: Job[] = await response.json();
+    return jobData.find((job) => job.id === id);
+  } catch (error) {
+    console.error("Error fetching job by ID:", error);
+    return undefined;
+  }
+};
