@@ -59,6 +59,13 @@ describe("JobList.vue", () => {
     expect(wrapper.find("[data-testid='loading-state']").exists()).toBe(true);
   });
 
+  it("should render the error state", async () => {
+    store.apiError = "Api error!!!";
+    const wrapper = mount(JobList);
+    await flushPromises();
+    expect(wrapper.find("[data-testid='error-state']").exists()).toBe(true);
+  });
+
   it("should render the empty state when there are no jobs", async () => {
     store.jobs = [];
     const wrapper = mount(JobList);

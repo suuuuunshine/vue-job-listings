@@ -9,7 +9,12 @@
         @input="onSearch"
       />
     </div>
-    <div v-if="store.loading" class="loading" data-testid="loading-state">
+
+    <div v-if="store.apiError !== ''" class="error" data-testid="error-state">
+      <p>{{ store.apiError }}</p>
+    </div>
+
+    <div v-else-if="store.loading" class="loading" data-testid="loading-state">
       <p>Loading....</p>
     </div>
 
@@ -147,6 +152,7 @@ const empty = computed(() => !store.jobs.length);
   }
 }
 
+.error,
 .loading,
 .empty {
   height: 70vh;

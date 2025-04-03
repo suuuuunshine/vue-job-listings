@@ -10,7 +10,8 @@ export const useJobsStore = defineStore("jobsStore", () => {
   const selectedCategory = ref("");
   const searchQuery = ref("");
   const totalCount = ref(0);
-  let loading = ref(true);
+  const apiError = ref("");
+  const loading = ref(true);
 
   const fetchJobsForPage = async () => {
     try {
@@ -25,6 +26,7 @@ export const useJobsStore = defineStore("jobsStore", () => {
       totalCount.value = total;
     } catch (error) {
       console.error("Failed to fetch jobs:", error);
+      apiError.value = "Failed to fetch jobs, please try again later.";
     } finally {
       loading.value = false;
     }
@@ -64,6 +66,7 @@ export const useJobsStore = defineStore("jobsStore", () => {
     searchQuery,
     selectedCategory,
     loading,
+    apiError,
     fetchJobsForPage,
     nextPage,
     previousPage,
