@@ -1,4 +1,9 @@
 import type { Job } from "../types/job";
+interface query {
+    page?: number;
+    category?: string;
+    search?: string;
+}
 export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", Pick<{
     jobs: import("vue").Ref<{
         id: number;
@@ -28,6 +33,7 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
     resetJobs: () => void;
+    setQuery: (query: query) => void;
 }, "jobs" | "page" | "limit" | "totalCount" | "searchQuery" | "selectedCategory" | "loading" | "apiError">, Pick<{
     jobs: import("vue").Ref<{
         id: number;
@@ -57,6 +63,7 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
     resetJobs: () => void;
+    setQuery: (query: query) => void;
 }, never>, Pick<{
     jobs: import("vue").Ref<{
         id: number;
@@ -86,4 +93,6 @@ export declare const useJobsStore: import("pinia").StoreDefinition<"jobsStore", 
     filterJobs: (category: string) => void;
     searchJobs: (query: string) => void;
     resetJobs: () => void;
-}, "fetchJobsForPage" | "nextPage" | "previousPage" | "filterJobs" | "searchJobs" | "resetJobs">>;
+    setQuery: (query: query) => void;
+}, "fetchJobsForPage" | "nextPage" | "previousPage" | "filterJobs" | "searchJobs" | "resetJobs" | "setQuery">>;
+export {};

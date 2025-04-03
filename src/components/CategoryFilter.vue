@@ -31,7 +31,7 @@ if (!route.query.category) {
 
 const onCategoryChange = (event: Event) => {
   const selectedCategory = (event.target as HTMLSelectElement).value;
-  updateQueryParams({ category: selectedCategory, page: 1 });
+  updateQueryParams({ category: selectedCategory });
 };
 
 const updateQueryParams = (params: Record<string, string>) => {
