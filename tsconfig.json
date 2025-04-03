@@ -17,7 +17,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client", "vue-tsc"]
+    "types": ["vite/client", "vue-tsc"],
+    "declarationDir": "./dist/types"
   },
   "include": [
     "vite.config.ts",

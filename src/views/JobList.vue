@@ -53,7 +53,7 @@
 import CategoryFilter from "../components/CategoryFilter.vue";
 import JobCard from "../components/JobCard.vue";
 
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import { useJobsStore } from "../stores/jobsStore";
 
 const searchQuery = ref("");
