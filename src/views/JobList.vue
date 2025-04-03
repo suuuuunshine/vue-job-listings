@@ -138,6 +138,12 @@ const empty = computed(() => !store.jobs.length);
   margin: 0 12px;
   flex-wrap: wrap;
   gap: 8px;
+  @media (max-width: 663px) {
+    justify-content: start;
+    .search-input {
+      margin-left: 0;
+    }
+  }
 }
 
 .search-input {
