@@ -9,7 +9,7 @@
         @input="onSearch"
       />
     </div>
-    <div v-if="loading" class="loading">
+    <div v-if="store.loading" class="loading">
       <p>Loading....</p>
     </div>
 
@@ -20,14 +20,14 @@
 
     <div v-else class="cards">
       <JobCard
-        v-for="job in paginatedJobs"
+        v-for="job in store.jobs"
         :key="job.id"
         :job="job"
         :highlight="searchQuery"
       />
     </div>
 
-    <div class="pagination" v-if="!loading && !empty && totalPages !== 1">
+    <div class="pagination" v-if="!store.loading && !empty && totalPages !== 1">
       <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
       <span class="current-page"
         >Page {{ currentPage }} of {{ totalPages }}</span
@@ -46,8 +46,6 @@ import JobCard from "../components/JobCard.vue";
 import { ref, computed, watch } from "vue";
 import { useJobsStore } from "../stores/jobsStore";
 
-const loading = ref(false);
-const empty = ref(false);
 const searchQuery = ref("");
 const onSearch = (event: Event) => {
   const query = (event.target as HTMLSelectElement).value;
@@ -58,10 +56,6 @@ const onSearch = (event: Event) => {
 };
 
 const store = useJobsStore();
-
-const paginatedJobs = computed(() => {
-  return store.jobs;
-});
 
 const totalPages = computed(() => {
   return Math.ceil(store.totalCount / store.limit);
@@ -81,13 +75,7 @@ const nextPage = () => {
   }
 };
 
-watch(
-  () => store.jobs,
-  () => {
-    loading.value = false;
-    empty.value = store.jobs.length === 0;
-  }
-);
+const empty = computed(() => !store.jobs.length);
 </script>
 
 <style lang="scss" scoped>
