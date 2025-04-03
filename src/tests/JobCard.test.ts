@@ -11,7 +11,7 @@ const router = createRouter({
 });
 
 describe("JobCard.vue", () => {
-  it("renders job title and company", async () => {
+  it("should render the job title and company", async () => {
     const job: Job = {
       id: 1,
       title: "Frontend Developer",
@@ -40,7 +40,7 @@ describe("JobCard.vue", () => {
     expect(jobCompany.text()).toContain("TechCorp");
   });
 
-  it("emits event when button is clicked", async () => {
+  it("should emit the event when button is clicked", async () => {
     const job: Job = {
       id: 1,
       title: "Frontend Developer",
