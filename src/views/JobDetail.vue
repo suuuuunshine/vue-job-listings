@@ -1,5 +1,5 @@
 <template>
-  <div class="view-container">
+  <div class="view-container" data-testid="job-view">
     <h2 class="title">About us</h2>
     <p>
       At PixelCrafters, we're not just building the future — we're shaping it
@@ -21,8 +21,8 @@
       time. Ready to make an impact? Let's build the future together.
     </p>
     <div v-if="job" class="job-section">
-      <h2 class="title">{{ job.title }}</h2>
-      <p>{{ job.description }}</p>
+      <h2 class="title" data-testid="job-title">{{ job.title }}</h2>
+      <p data-testid="job-description">{{ job.description }}</p>
       <h2 class="perks-title">Perks of Joining PixelCrafters</h2>
       <div class="perks-list">
         <ul>
@@ -35,7 +35,13 @@
           </li>
         </ul>
       </div>
-      <button class="floating-button" @click="applyToJob">Apply now!</button>
+      <button
+        class="floating-button"
+        data-testid="apply-now-button"
+        @click="applyToJob"
+      >
+        Apply now!
+      </button>
     </div>
   </div>
 </template>
