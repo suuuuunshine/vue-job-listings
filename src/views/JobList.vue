@@ -58,8 +58,13 @@
 import CategoryFilter from "../components/CategoryFilter.vue";
 import JobCard from "../components/JobCard.vue";
 
-import { ref, computed } from "vue";
+import { ref, computed, onBeforeMount } from "vue";
 import { useJobsStore } from "../stores/jobsStore";
+
+onBeforeMount(() => {
+  store.resetJobs();
+  store.fetchJobsForPage();
+});
 
 const searchQuery = ref("");
 const onSearch = (event: Event) => {

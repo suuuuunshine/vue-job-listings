@@ -13,7 +13,17 @@ export const useJobsStore = defineStore("jobsStore", () => {
   const apiError = ref("");
   const loading = ref(true);
 
+  const resetJobs = () => {
+    jobs.value = [];
+    page.value = 1;
+    selectedCategory.value = "";
+    searchQuery.value = "";
+    totalCount.value = 0;
+    loading.value = true;
+  };
+
   const fetchJobsForPage = async () => {
+    console.log("fetch");
     try {
       const { jobs: fetchedJobs, total } = await fetchJobs(
         page.value,
@@ -56,8 +66,6 @@ export const useJobsStore = defineStore("jobsStore", () => {
     fetchJobsForPage();
   };
 
-  fetchJobsForPage();
-
   return {
     jobs,
     page,
@@ -72,5 +80,6 @@ export const useJobsStore = defineStore("jobsStore", () => {
     previousPage,
     filterJobs,
     searchJobs,
+    resetJobs,
   };
 });
