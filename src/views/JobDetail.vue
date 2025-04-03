@@ -222,7 +222,8 @@ ul li {
 .floating-button {
   position: fixed;
   bottom: 20px;
-  right: 48%;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 15px 25px;
   background-color: var(--dark-blue);
   color: white;
