@@ -132,7 +132,7 @@ const hasErrors = computed(() =>
 const submit = () => {
   Object.keys(form.value).forEach((field) => validateField(field));
   if (hasErrors.value) return;
-  console.log("Form submitted:", form.value);
+  console.log("Form submitted:", JSON.stringify(form.value));
   alert(
     `Application submitted successfully:\n Name: ${
       form.value.firstName
