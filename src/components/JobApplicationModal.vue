@@ -133,7 +133,15 @@ const submit = () => {
   Object.keys(form.value).forEach((field) => validateField(field));
   if (hasErrors.value) return;
   console.log("Form submitted:", form.value);
-  alert(`Application submitted succesfully: ${JSON.stringify(form.value)}`);
+  alert(
+    `Application submitted successfully:\n Name: ${
+      form.value.firstName
+    }\n Lastname: ${form.value.lastName}\n Email: ${
+      form.value.email
+    }\n Resume: ${
+      form.value.resume ? form.value.resume.name : "No file uploaded"
+    }`
+  );
   close();
 };
 
