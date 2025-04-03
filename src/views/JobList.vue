@@ -5,6 +5,7 @@
       <input
         type="search"
         class="search-input"
+        data-testid="search-input"
         placeholder="Search for jobs by title, description, location, or company"
         @input="onSearch"
       />
@@ -32,7 +33,10 @@
       />
     </div>
 
-    <div class="pagination" v-if="!store.loading && !empty && totalPages !== 1">
+    <div
+      class="pagination"
+      v-if="!store.apiError && !store.loading && !empty && totalPages !== 1"
+    >
       <button
         data-testid="previous-button"
         :disabled="currentPage === 1"
@@ -67,6 +71,7 @@ onBeforeMount(() => {
 });
 
 const searchQuery = ref("");
+
 const onSearch = (event: Event) => {
   const query = (event.target as HTMLSelectElement).value;
   searchQuery.value = query;
@@ -155,9 +160,7 @@ const empty = computed(() => !store.jobs.length);
   margin-left: 8px;
   border: 1px solid var(--muted-blue);
   color: var(--dark-blue);
-  &::placeholder {
-    color: var(--dark-blue);
-  }
+
   &:focus {
     outline: none;
   }

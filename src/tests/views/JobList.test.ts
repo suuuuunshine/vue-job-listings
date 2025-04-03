@@ -1,10 +1,11 @@
 import { flushPromises, mount } from "@vue/test-utils";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
 import JobList from "../../views/JobList.vue";
 import { useJobsStore } from "../../stores/jobsStore";
+import { fetchJobs } from "../../utils/mockApi";
 
-//Mock the components because they already have their own tests
+// Mock the components because they already have their own tests
 vi.mock("../../components/CategoryFilter.vue", () => ({
   default: {
     template: "<div class='category-filter'></div>",
@@ -18,30 +19,9 @@ vi.mock("../../components/JobCard.vue", () => ({
   },
 }));
 
+// Mock API response
 vi.mock("../../utils/mockApi", () => ({
-  fetchJobs: vi.fn().mockResolvedValue({
-    jobs: [
-      {
-        id: 1,
-        title: "Frontend Developer",
-        category: "Frontend",
-        company: "TechCorp",
-        description:
-          "We're looking for a Vue.js developer to join our dynamic team and work on building innovative web applications.",
-        location: "Remote",
-      },
-      {
-        id: 2,
-        title: "Backend Developer",
-        category: "Backend",
-        company: "DevFirm",
-        description:
-          "Looking for a Node.js expert to develop and maintain server-side logic and database management systems.",
-        location: "New York",
-      },
-    ],
-    total: 2,
-  }),
+  fetchJobs: vi.fn(),
 }));
 
 describe("JobList.vue", () => {
@@ -52,14 +32,26 @@ describe("JobList.vue", () => {
     store = useJobsStore();
   });
 
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   it("should render the loading state", async () => {
+    vi.mocked(fetchJobs).mockResolvedValue({
+      jobs: [],
+      total: 0,
+    });
     store.loading = true;
     const wrapper = mount(JobList);
-    await flushPromises();
+
     expect(wrapper.find("[data-testid='loading-state']").exists()).toBe(true);
   });
 
   it("should render the error state", async () => {
+    vi.mocked(fetchJobs).mockResolvedValue({
+      jobs: [],
+      total: 0,
+    });
     store.apiError = "Api error!!!";
     const wrapper = mount(JobList);
     await flushPromises();
@@ -67,100 +59,114 @@ describe("JobList.vue", () => {
   });
 
   it("should render the empty state when there are no jobs", async () => {
-    store.jobs = [];
+    vi.mocked(fetchJobs).mockResolvedValue({ jobs: [], total: 0 });
+
     const wrapper = mount(JobList);
     await flushPromises();
+
     expect(wrapper.find("[data-testid='empty-state']").exists()).toBe(true);
   });
 
   it("should render the job cards when jobs are available", async () => {
-    store.jobs = [
-      {
-        id: 1,
-        title: "Frontend Developer",
-        category: "Engineering",
-        company: "TechCorp",
-        description: "Develop amazing UIs",
-        location: "Remote",
-      },
-      {
-        id: 2,
-        title: "Backend Developer",
-        category: "Engineering",
-        company: "CodeMasters",
-        description: "Build scalable APIs",
-        location: "New York",
-      },
-    ];
+    vi.mocked(fetchJobs).mockResolvedValue({
+      jobs: [
+        {
+          id: 1,
+          title: "Frontend Developer",
+          category: "Engineering",
+          company: "TechCorp",
+          description: "Develop amazing UIs",
+          location: "Remote",
+        },
+        {
+          id: 2,
+          title: "Backend Developer",
+          category: "Engineering",
+          company: "CodeMasters",
+          description: "Build scalable APIs",
+          location: "New York",
+        },
+      ],
+      total: 2,
+    });
 
     const wrapper = mount(JobList);
     await flushPromises();
+
     expect(wrapper.findAll(".job-card").length).toBe(2);
   });
 
   it("should filter jobs based on search query", async () => {
-    store.jobs = [
-      {
-        id: 1,
-        title: "Frontend Developer",
-        category: "Engineering",
-        company: "TechCorp",
-        description: "Develop amazing UIs",
-        location: "Remote",
-      },
-      {
-        id: 2,
-        title: "Backend Developer",
-        category: "Engineering",
-        company: "CodeMasters",
-        description: "Build scalable APIs",
-        location: "New York",
-      },
-    ];
+    vi.mocked(fetchJobs).mockResolvedValue({
+      jobs: [
+        {
+          id: 1,
+          title: "Frontend Developer",
+          category: "Engineering",
+          company: "TechCorp",
+          description: "Develop amazing UIs",
+          location: "Remote",
+        },
+        {
+          id: 2,
+          title: "Backend Developer",
+          category: "Engineering",
+          company: "CodeMasters",
+          description: "Build scalable APIs",
+          location: "New York",
+        },
+      ],
+      total: 2,
+    });
 
     store.searchJobs = vi.fn();
 
     const wrapper = mount(JobList);
-    const input = wrapper.find(".search-input");
+    await flushPromises();
+
+    const input = wrapper.find("[data-testid='search-input']");
+
     await input.setValue("Frontend");
     await input.trigger("input");
 
-    setTimeout(() => {
-      expect(store.searchJobs).toHaveBeenCalledWith("Frontend");
-    }, 500);
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for search debounce
+
+    expect(store.searchJobs).toHaveBeenCalledWith("Frontend");
   });
 
   it("should handle the pagination buttons", async () => {
-    store.jobs = [
-      {
-        id: 1,
-        title: "Frontend Developer",
-        category: "Engineering",
-        company: "TechCorp",
-        description: "Develop amazing UIs",
-        location: "Remote",
-      },
-      {
-        id: 2,
-        title: "Backend Developer",
-        category: "Engineering",
-        company: "CodeMasters",
-        description: "Build scalable APIs",
-        location: "New York",
-      },
-    ];
-
-    store.page = 2;
-    store.totalCount = 10;
-    store.limit = 2;
-    store.previousPage = vi.fn();
-    store.nextPage = vi.fn();
-
+    vi.mocked(fetchJobs).mockResolvedValue({
+      jobs: [
+        {
+          id: 1,
+          title: "Frontend Developer",
+          category: "Engineering",
+          company: "TechCorp",
+          description: "Develop amazing UIs",
+          location: "Remote",
+        },
+        {
+          id: 2,
+          title: "Backend Developer",
+          category: "Engineering",
+          company: "CodeMasters",
+          description: "Build scalable APIs",
+          location: "New York",
+        },
+      ],
+      total: 10,
+    });
+    vi.spyOn(store, "previousPage");
+    vi.spyOn(store, "nextPage");
     const wrapper = mount(JobList);
     await flushPromises();
-    await wrapper.find("[data-testid='previous-button']").trigger("click");
-    expect(store.previousPage).toHaveBeenCalled();
+
     await wrapper.find("[data-testid='next-button']").trigger("click");
+    await flushPromises();
+    expect(store.nextPage).toHaveBeenCalled();
+
+    await wrapper.find("[data-testid='previous-button']").trigger("click");
+    await flushPromises();
     expect(store.previousPage).toHaveBeenCalled();
   });
 });
