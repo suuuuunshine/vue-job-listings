@@ -44,7 +44,7 @@ import CategoryFilter from "../components/CategoryFilter.vue";
 import JobCard from "../components/JobCard.vue";
 
 import { ref, computed, watch } from "vue";
-import { useJobStore } from "../stores/jobStore";
+import { useJobsStore } from "../stores/jobsStore";
 
 const loading = ref(false);
 const empty = ref(false);
@@ -57,7 +57,7 @@ const onSearch = (event: Event) => {
   }, 500);
 };
 
-const store = useJobStore();
+const store = useJobsStore();
 
 const paginatedJobs = computed(() => {
   return store.jobs;

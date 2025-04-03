@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { fetchJobs } from "../utils/mockApi";
 import type { Job } from "../types/job";
 
-export const useJobStore = defineStore("jobStore", () => {
+export const useJobsStore = defineStore("jobsStore", () => {
   const jobs = ref<Job[]>([]);
   const page = ref(1);
   const limit = ref(8);

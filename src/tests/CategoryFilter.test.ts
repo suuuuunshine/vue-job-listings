@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
 import CategoryFilter from "../components/CategoryFilter.vue";
-import { useJobStore } from "../stores/jobStore";
+import { useJobsStore } from "../stores/jobsStore";
 
 vi.mock("../utils/mockApi.ts", () => ({
   fetchJobs: vi.fn().mockResolvedValue([]),
@@ -9,7 +9,7 @@ vi.mock("../utils/mockApi.ts", () => ({
 
 describe("CategoryFilter.vue", () => {
   it("should call store.filterJobs with the correct category when the select value changes", async () => {
-    const store = useJobStore();
+    const store = useJobsStore();
     const mockFilterJobs = vi.fn();
     store.filterJobs = mockFilterJobs;
 

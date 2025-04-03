@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-import { useJobStore } from "../stores/jobStore";
+import { useJobsStore } from "../stores/jobsStore";
 
-const store = useJobStore();
+const store = useJobsStore();
 
 const onCategoryChange = (event: Event) => {
   const selectedCategory = (event.target as HTMLSelectElement).value;
