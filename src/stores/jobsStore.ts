@@ -3,6 +3,12 @@ import { ref } from "vue";
 import { fetchJobs } from "../utils/mockApi";
 import type { Job } from "../types/job";
 
+interface query {
+  page?: number;
+  category?: string;
+  search?: string;
+}
+
 export const useJobsStore = defineStore("jobsStore", () => {
   const jobs = ref<Job[]>([]);
   const page = ref(1);
@@ -53,6 +59,14 @@ export const useJobsStore = defineStore("jobsStore", () => {
     }
   };
 
+  const setQuery = (query: query) => {
+    if (query.category) selectedCategory.value = query.category;
+    if (query.page) page.value = query.page;
+    if (query.search) searchQuery.value = query.search;
+
+    fetchJobsForPage();
+  };
+
   const filterJobs = (category: string) => {
     selectedCategory.value = category;
     page.value = 1;
@@ -80,5 +94,6 @@ export const useJobsStore = defineStore("jobsStore", () => {
     filterJobs,
     searchJobs,
     resetJobs,
+    setQuery,
   };
 });

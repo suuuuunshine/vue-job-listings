@@ -7,6 +7,7 @@
         class="search-input"
         data-testid="search-input"
         placeholder="Search for jobs by title, description, location, or company"
+        v-model="searchQuery"
         @input="onSearch"
       />
     </div>
@@ -62,25 +63,45 @@
 import CategoryFilter from "../components/CategoryFilter.vue";
 import JobCard from "../components/JobCard.vue";
 
-import { ref, computed, onBeforeMount } from "vue";
+import { ref, computed, onBeforeMount, watch } from "vue";
 import { useJobsStore } from "../stores/jobsStore";
+import { useRoute, useRouter } from "vue-router";
 
-onBeforeMount(() => {
-  store.resetJobs();
-  store.fetchJobsForPage();
-});
+const store = useJobsStore();
+const route = useRoute();
+const router = useRouter();
 
 const searchQuery = ref("");
 
-const onSearch = (event: Event) => {
-  const query = (event.target as HTMLSelectElement).value;
-  searchQuery.value = query;
+onBeforeMount(() => {
+  store.resetJobs();
+  const queryParams = route.query;
+
+  store.setQuery({
+    search: (queryParams?.search as string) || "",
+    category: (queryParams?.category as string) || "",
+    page: parseInt(queryParams?.page as string) || 1,
+  });
+
+  if (route.query.search) {
+    searchQuery.value = route.query.search as string;
+  }
+});
+
+watch(
+  () => route.query,
+  (newQuery) => {
+    store.setQuery(newQuery);
+  }
+);
+
+const onSearch = () => {
+  const query = searchQuery.value;
   setTimeout(() => {
     store.searchJobs(query);
+    updateQueryParams({ search: query, page: 1 });
   }, 500);
 };
-
-const store = useJobsStore();
 
 const totalPages = computed(() => {
   return Math.ceil(store.totalCount / store.limit);
@@ -91,16 +112,22 @@ const currentPage = computed(() => store.page);
 const prevPage = () => {
   if (store.page > 1) {
     store.previousPage();
+    updateQueryParams({ page: store.page });
   }
 };
 
 const nextPage = () => {
   if (store.page < totalPages.value) {
     store.nextPage();
+    updateQueryParams({ page: store.page });
   }
 };
 
 const empty = computed(() => !store.jobs.length);
+
+const updateQueryParams = (params: Record<string, string | number>) => {
+  router.push({ query: { ...route.query, ...params } });
+};
 </script>
 
 <style lang="scss" scoped>

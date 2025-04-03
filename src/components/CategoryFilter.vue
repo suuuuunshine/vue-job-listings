@@ -1,7 +1,12 @@
 <template>
   <div class="select-wrapper">
     <p class="label">Filter by category</p>
-    <select data-testid="category-filter-select" class="muted-blue white--text" @change="onCategoryChange">
+    <select
+      data-testid="category-filter-select"
+      class="muted-blue white--text"
+      v-model="store.selectedCategory"
+      @change="onCategoryChange"
+    >
       <option value="">All</option>
       <option value="Frontend">Frontend</option>
       <option value="Backend">Backend</option>
@@ -12,13 +17,25 @@
 
 <script setup lang="ts">
 import { useJobsStore } from "../stores/jobsStore";
+import { useRoute, useRouter } from "vue-router";
 
 const store = useJobsStore();
+const router = useRouter();
+const route = useRoute();
+
+if (!route.query.category) {
+  store.selectedCategory = "";
+} else {
+  store.selectedCategory = route.query.category as string;
+}
 
 const onCategoryChange = (event: Event) => {
   const selectedCategory = (event.target as HTMLSelectElement).value;
+  updateQueryParams({ category: selectedCategory, page: 1 });
+};
 
-  store.filterJobs(selectedCategory);
+const updateQueryParams = (params: Record<string, string>) => {
+  router.push({ query: { ...route.query, ...params, page: 1 } });
 };
 </script>
 
