@@ -7,7 +7,7 @@ import type { Job } from "../../types/job";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: "/", component: { template: "<div></div>" } }],
+  routes: [{ path: "/", name: "home", component: { template: "<div></div>" } }],
 });
 
 describe("JobCard.vue", () => {

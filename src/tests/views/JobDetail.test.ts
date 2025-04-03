@@ -40,7 +40,7 @@ describe("JobDetail", () => {
     router = createRouter({
       history: createWebHistory(),
       routes: [
-        { path: "/", redirect: "/jobs" },
+        { path: "/", name: "home", redirect: "/jobs" },
         { path: "/jobs", name: "job-list", component: JobList },
         { path: "/jobs/:id", name: "job-detail", component: JobDetail },
         { path: "/:pathMatch(.*)*", name: "404", component: NotFound },
