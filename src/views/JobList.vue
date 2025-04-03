@@ -9,11 +9,11 @@
         @input="onSearch"
       />
     </div>
-    <div v-if="store.loading" class="loading">
+    <div v-if="store.loading" class="loading" data-testid="loading-state">
       <p>Loading....</p>
     </div>
 
-    <div v-else-if="empty" class="empty">
+    <div v-else-if="empty" class="empty" data-testid="empty-state">
       <p>No jobs found.</p>
       <p>Remove the filters or search words.</p>
     </div>
@@ -28,11 +28,21 @@
     </div>
 
     <div class="pagination" v-if="!store.loading && !empty && totalPages !== 1">
-      <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
+      <button
+        data-testid="previous-button"
+        :disabled="currentPage === 1"
+        @click="prevPage"
+      >
+        Previous
+      </button>
       <span class="current-page"
         >Page {{ currentPage }} of {{ totalPages }}</span
       >
-      <button @click="nextPage" :disabled="currentPage >= totalPages">
+      <button
+        data-testid="next-button"
+        :disabled="currentPage >= totalPages"
+        @click="nextPage"
+      >
         Next
       </button>
     </div>
