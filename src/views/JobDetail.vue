@@ -52,12 +52,10 @@ const route = useRoute();
 const router = useRouter();
 
 const job = computed(() => {
-  console.log(jobsStore.jobs);
   return jobsStore.jobs.find((j) => j.id === Number(route.params.id));
 });
 
 watchEffect(() => {
-  console.log(job.value);
   if (!job.value) {
     router.push({ name: "404" });
   }
