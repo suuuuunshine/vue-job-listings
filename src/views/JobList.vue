@@ -126,15 +126,18 @@ const empty = computed(() => !store.jobs.length);
   justify-content: end;
   align-items: center;
   margin: 0 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .search-input {
   padding: 8px 12px;
   max-width: 400px;
+  width: 100%;
   flex-grow: 1;
   border-radius: 50px;
-  margin-left: 4px;
-  border: none;
+  margin-left: 8px;
+  border: 1px solid var(--muted-blue);
   color: var(--dark-blue);
   &::placeholder {
     color: var(--dark-blue);

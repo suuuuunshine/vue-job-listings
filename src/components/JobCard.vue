@@ -1,7 +1,7 @@
 <template>
   <div
     data-testid="job-card"
-    class="job-card pale-dogwood"
+    class="job-card"
     :style="cardStyle"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
@@ -108,17 +108,19 @@ const applyToJob = () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: none;
+  border: 1px solid var(--muted-blue);
   padding: 16px;
   border-radius: 8px;
   transition: transform 0.3s ease;
-  -webkit-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
-  -moz-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
-  box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
   cursor: pointer;
 
   &:hover {
+    border: none;
+    background-color: var(--pale-white);
     transform: scale(1.05);
+    -webkit-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
+    -moz-box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
+    box-shadow: 6px 7px 21px 2px rgba(209, 198, 209, 1);
   }
 
   .job-info {

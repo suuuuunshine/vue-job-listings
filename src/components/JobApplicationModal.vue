@@ -74,6 +74,7 @@
                 <button
                   type="button"
                   data-testid="cancel-button"
+                  class="cancel-button"
                   @click="close"
                 >
                   Cancel
@@ -255,11 +256,24 @@ button {
 .submit-button {
   background-color: var(--blue-primary);
   color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-button[type="button"] {
+.cancel-button {
   background-color: var(--dark-coral);
   color: white;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 600px) {

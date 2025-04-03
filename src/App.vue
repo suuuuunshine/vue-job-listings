@@ -52,16 +52,16 @@ watch(
   align-items: center;
 }
 .job-header-route {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  margin-left: 62px;
+  margin-left: 40px;
 }
 
 .header {
   background-color: var(--dark-blue);
   color: white;
-  padding: 16px;
-  border-radius: 8px;
+  padding: 16px 0 16px 8px;
+  border-radius: 20px;
   margin: 20px;
   display: flex;
   align-items: center;
