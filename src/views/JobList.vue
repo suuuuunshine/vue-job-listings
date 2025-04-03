@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="handlers">
-      <JobFilter />
+      <CategoryFilter />
       <input
         type="search"
         class="search-input"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import JobFilter from "../components/JobFilter.vue";
+import CategoryFilter from "../components/CategoryFilter.vue";
 import JobCard from "../components/JobCard.vue";
 
 import { ref, computed, watch } from "vue";

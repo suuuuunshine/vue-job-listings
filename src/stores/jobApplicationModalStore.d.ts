@@ -50,3 +50,4 @@ export declare const useModalStore: import("pinia").StoreDefinition<"modal", Pic
     }) => void;
     closeModal: () => void;
 }, "openModal" | "closeModal">>;
+export type ModalStore = ReturnType<typeof useModalStore>;
