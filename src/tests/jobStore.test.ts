@@ -1,18 +1,100 @@
-import { describe, it, expect } from "vitest";
-import { setActivePinia, createPinia } from "pinia";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { createPinia } from "pinia";
 import { useJobStore } from "../stores/jobStore";
+import { fetchJobs } from "../utils/mockApi";
 
-describe("Job Store", () => {
-  setActivePinia(createPinia());
-  const store = useJobStore();
+vi.mock("../utils/mockApi", () => ({
+  fetchJobs: vi.fn().mockResolvedValue({
+    jobs: [
+      {
+        id: 1,
+        title: "Frontend Developer",
+        category: "Frontend",
+        company: "TechCorp",
+        description: "Looking for a Vue developer",
+        location: "Remote",
+      },
+    ],
+    total: 1,
+  }),
+}));
 
-  it("fetches jobs", async () => {
-    await store.fetchJobsForPage();
-    expect(store.jobs.length).toBeGreaterThan(0);
+const mockJobData = {
+  jobs: [
+    {
+      id: 1,
+      title: "Frontend Developer",
+      category: "Frontend",
+      company: "TechCorp",
+      description: "Looking for a Vue developer",
+      location: "Remote",
+    },
+  ],
+  total: 1,
+};
+
+describe("jobStore", () => {
+  let jobStore: ReturnType<typeof useJobStore>;
+
+  beforeEach(() => {
+    const pinia = createPinia();
+    jobStore = useJobStore(pinia);
   });
 
-  it("filters jobs correctly", () => {
-    store.filterJobs("Frontend");
-    expect(store.jobs.every((job) => job.category === "Frontend")).toBe(true);
+  it("should initialize with default values", async () => {
+    await jobStore.fetchJobsForPage();
+
+    expect(jobStore.jobs).toEqual(mockJobData.jobs);
+    expect(jobStore.page).toBe(1);
+    expect(jobStore.limit).toBe(8);
+    expect(jobStore.selectedCategory).toBe("");
+    expect(jobStore.searchQuery).toBe("");
+    expect(jobStore.totalCount).toBe(1);
+  });
+
+  it("should call fetchJobsForPage and update jobs and totalCount", async () => {
+    await jobStore.fetchJobsForPage();
+
+    expect(fetchJobs).toHaveBeenCalled();
+    expect(jobStore.jobs).toEqual(mockJobData.jobs);
+    expect(jobStore.totalCount).toBe(mockJobData.total);
+  });
+
+  it("should call nextPage and increment the page", async () => {
+    await jobStore.nextPage();
+
+    expect(jobStore.page).toBe(2);
+    expect(fetchJobs).toHaveBeenCalledWith(2, 8, "", "");
+  });
+
+  it("should call previousPage and decrement the page if page > 1", async () => {
+    jobStore.page = 2;
+
+    await jobStore.previousPage();
+
+    expect(jobStore.page).toBe(1);
+    expect(fetchJobs).toHaveBeenCalledWith(1, 8, "", "");
+  });
+
+  it("should not decrement page if it is at the first page", async () => {
+    await jobStore.previousPage();
+
+    expect(jobStore.page).toBe(1);
+  });
+
+  it("should filter jobs by category", async () => {
+    await jobStore.filterJobs("Frontend");
+
+    expect(jobStore.selectedCategory).toBe("Frontend");
+    expect(fetchJobs).toHaveBeenCalledWith(1, 8, "Frontend", "");
+    expect(jobStore.jobs).toEqual(mockJobData.jobs);
+  });
+
+  it("should search jobs by query", async () => {
+    await jobStore.searchJobs("Vue");
+
+    expect(jobStore.searchQuery).toBe("Vue");
+    expect(fetchJobs).toHaveBeenCalledWith(1, 8, "", "Vue");
+    expect(jobStore.jobs).toEqual(mockJobData.jobs);
   });
 });

@@ -59,6 +59,7 @@ export const useJobStore = defineStore("jobStore", () => {
     limit,
     totalCount,
     searchQuery,
+    selectedCategory,
     fetchJobsForPage,
     nextPage,
     previousPage,
