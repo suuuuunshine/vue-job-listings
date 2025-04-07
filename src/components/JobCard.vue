@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router"; // To use router for navigation
 import WordHighlighter from "vue-word-highlighter";
 import { useModalStore } from "../stores/jobApplicationModalStore";
@@ -73,23 +73,19 @@ const props = defineProps({
   },
 });
 
-const cardStyle = ref({
+const cardStyle = reactive({
   transform: "scale(1)",
   transition: "transform 0.3s ease",
 });
 
 const onMouseEnter = () => {
-  cardStyle.value = {
-    transform: "scale(1.05)",
-    transition: "transform 0.3s ease",
-  };
+  cardStyle.transform = "scale(1.05)";
+  cardStyle.transition = "transform 0.3s ease";
 };
 
 const onMouseLeave = () => {
-  cardStyle.value = {
-    transform: "scale(1)",
-    transition: "transform 0.3s ease",
-  };
+  cardStyle.transform = "scale(1)";
+  cardStyle.transition = "transform 0.3s ease";
 };
 
 const router = useRouter();

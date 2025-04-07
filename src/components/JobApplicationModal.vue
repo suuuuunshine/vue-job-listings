@@ -96,30 +96,31 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import { useModalStore } from "../stores/jobApplicationModalStore";
 
 const modalStore = useModalStore();
 
-const form = ref({
+const initialForm = {
   firstName: "",
   lastName: "",
   email: "",
   resume: null as File | null,
-});
+};
+
+const form = reactive({ ...initialForm });
+
 
 const errors = ref<{ [key: string]: string }>({});
 
 const validateField = (field: string) => {
   if (field === "firstName" || field === "lastName") {
-    errors.value[field] = form.value[field].trim()
-      ? ""
-      : "This field is required.";
+    errors.value[field] = form[field].trim() ? "" : "This field is required.";
   }
 
   if (field === "email") {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    errors.value.email = form.value.email.match(emailPattern)
+    errors.value.email = form.email.match(emailPattern)
       ? ""
       : "Invalid email address.";
   }
@@ -130,16 +131,14 @@ const hasErrors = computed(() =>
 );
 
 const submit = () => {
-  Object.keys(form.value).forEach((field) => validateField(field));
+  Object.keys(form).forEach((field) => validateField(field));
   if (hasErrors.value) return;
-  console.log("Form submitted:", JSON.stringify(form.value));
+  console.log("Form submitted:", JSON.stringify(form));
   alert(
     `Application submitted successfully:\n Name: ${
-      form.value.firstName
-    }\n Lastname: ${form.value.lastName}\n Email: ${
-      form.value.email
-    }\n Resume: ${
-      form.value.resume ? form.value.resume.name : "No file uploaded"
+      form.firstName
+    }\n Lastname: ${form.lastName}\n Email: ${form.email}\n Resume: ${
+      form.resume ? form.resume.name : "No file uploaded"
     }`
   );
   close();
@@ -152,7 +151,7 @@ const handleFileUpload = (event: Event) => {
     if (file.size > 5 * 1024 * 1024) {
       alert("File size exceeds 5MB.");
     } else {
-      form.value.resume = file;
+      form.resume = file;
     }
   }
 };
@@ -164,7 +163,7 @@ const close = () => {
 };
 
 const resetForm = () => {
-  form.value = { firstName: "", lastName: "", email: "", resume: null };
+  Object.assign(form, initialForm);
   errors.value = {};
 };
 </script>
